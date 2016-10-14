@@ -22,10 +22,11 @@ public class TestEntry {
 	public void setUp() throws Exception {
 		entry = new Entry();
 	}
-
+	
+	//TEST1
 	@Test
 	public void createEntry() {
-		assertFalse("TEST5: Entry created", entry == null);
+		assertFalse("TEST1: Entry created", entry == null);
 	}
 
 }
