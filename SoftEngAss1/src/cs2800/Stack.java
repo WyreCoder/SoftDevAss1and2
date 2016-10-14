@@ -2,38 +2,36 @@
  * 
  */
 package cs2800;
-
-import java.util.ArrayList;
-
 /**
  * @author Chloe
  *
  */
 public class Stack {
-	private ArrayList<Entry> list = new ArrayList<Entry>();;
+	private Entry top;
+	private int size = 0;
 	
 	public void push(Entry entry) {
-		list.add(entry);
+		size += 1;
+		entry.setNext(top);	//top of stack is now new entry's 'next'
+		top = entry;		//new entry is top of stack
 	}
 	
-	public Entry top() throws EmptyStackException {
-		if (size() <= 0) {
-			throw new EmptyStackException("Stack is empty. No top Entry.");
-		}
-		return list.get(size());
+	public Entry top() {
+		return top;
 	}
 
 	public int size() {
-		return list.size();
+		return size;
 	}
 
-	public Entry pop() throws EmptyStackException {
-		if (size() == 0) {	// if stack is empty
+	public Entry pop() throws EmptyStackException{
+		if (top == null) {	//if stack is empty
 			throw new EmptyStackException("Stack is empty. Can not pop.");
 		}
-		Entry top = top();	// note top Entry
-		list.remove(size());// remove top Entry from stack
-		return top;			// return noted top Entry
+		size -= 1;
+		Entry oldTop = top;	//set aside top value
+		top = top.getNext();//bring next Entry to top
+		return oldTop;		//return previous top value
 	}
 
 }
