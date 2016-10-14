@@ -12,12 +12,13 @@ import org.junit.Test;
  *
  */
 public class TestType {
-
+	private Type type;
 	/**
 	 * @throws java.lang.Exception
 	 */
 	@Before
 	public void setUp() throws Exception {
+		type = new Type();
 	}
 
 	@Test

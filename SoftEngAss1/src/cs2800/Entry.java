@@ -8,6 +8,10 @@ package cs2800;
  *
  */
 public class Entry {
+	Symbol other;
+	float number;
+	String str;
+	Type type;
 	private Entry next; //used to implement a linked list
 	
 	public void Entry() {

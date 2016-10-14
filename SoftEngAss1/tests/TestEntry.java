@@ -23,7 +23,7 @@ public class TestEntry {
 		entry = new Entry();
 	}
 	
-	//TEST1
+	//TEST1 to check an Entry can be created
 	@Test
 	public void createEntry() {
 		assertFalse("TEST1: Entry created", entry == null);

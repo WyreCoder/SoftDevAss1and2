@@ -20,7 +20,7 @@ public class Stack {
 		if (size() <= 0) {
 			throw new EmptyStackException("Stack is empty. No top Entry.");
 		}
-		return list.get(size());
+		return list.get(size()-1);	// return Entry from last index
 	}
 
 	public int size() {
@@ -28,12 +28,12 @@ public class Stack {
 	}
 
 	public Entry pop() throws EmptyStackException {
-		if (size() == 0) {	// if stack is empty
+		if (size() <= 0) {			// if stack is empty
 			throw new EmptyStackException("Stack is empty. Can not pop.");
 		}
-		Entry top = top();	// note top Entry
-		list.remove(size());// remove top Entry from stack
-		return top;			// return noted top Entry
+		Entry top = top();			// note top Entry
+		list.remove(size()-1);		// remove top Entry from stack
+		return top;					// return noted top Entry
 	}
 
 }
