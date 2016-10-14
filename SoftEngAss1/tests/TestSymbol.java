@@ -12,15 +12,15 @@ import org.junit.Test;
  *
  */
 public class TestSymbol {
-	private Symbol symbol;
 	/**
 	 * @throws java.lang.Exception
 	 */
 	@Before
 	public void setUp() throws Exception {
-		symbol = new Symbol();
+		
 	}
-
+	
+	//TEST
 	@Test
 	public void test() {
 		fail("Not yet implemented");

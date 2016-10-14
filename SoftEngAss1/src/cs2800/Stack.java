@@ -29,7 +29,7 @@ public class Stack {
 
 	public Entry pop() throws EmptyStackException {
 		if (size() <= 0) {			// if stack is empty
-			throw new EmptyStackException("Stack is empty. Can not pop.");
+			throw new EmptyStackException("Stack is empty. Cannot pop.");
 		}
 		Entry top = top();			// note top Entry
 		list.remove(size()-1);		// remove top Entry from stack

@@ -12,9 +12,30 @@ public class Entry {
 	float number;
 	String str;
 	Type type;
-	private Entry next; //used to implement a linked list
 	
-	public void Entry() {
-		
+	public Entry(float value) {
+		number = value;
+		type = Type.NUMBER;
+	}
+	
+	public Entry(Symbol which) {
+		other = which;
+		type = Type.SYMBOL;
+	}
+	
+	public Type getType() {
+		return type;
+	}
+	
+	public String getString() {//badtype exception
+		return null;
+	}
+	
+	public Symbol getSymbol() {//badtype exception
+		return other;
+	}
+	
+	public float getValue() {//badtype exception
+		return 0;
 	}
 }
