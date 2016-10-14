@@ -13,13 +13,4 @@ public class Entry {
 	public void Entry() {
 		
 	}
-
-	public Entry getNext() {
-		return next;
-	}
-
-	public void setNext(Entry entry) {
-		next = entry;
-		
-	}
 }
