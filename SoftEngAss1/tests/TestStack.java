@@ -20,23 +20,26 @@ import cs2800.Stack;
 public class TestStack {
 	private Stack stack;
 	private Entry entry;
+	private float testFloat = 5;
 	/**
 	 * @throws java.lang.Exception
 	 */
 	@Before
 	public void setUp() throws Exception {
 		stack = new Stack();
-		entry = new Entry();
+		entry = new Entry(testFloat);
 	}
 	
 	//TEST2 to check top returns the last item added
+	//return 4. then test changed to implement Entries. return last value in list.
 	@Test
 	public void pushThenTop() { 
 		stack.push(entry);
 		assertEquals("TEST2: push, then top", entry, stack.top());
 	}
 
-	//TEST3 to check size is correctly calculated
+	//TEST3 to check size is returned
+	//return 1.
 	@Test
 	public void pushThenSize() {
 		stack.push(entry);
@@ -44,6 +47,7 @@ public class TestStack {
 	}
 	
 	//TEST4 to check pop gives last item added
+	//return last list item
 	@Test
 	public void pushThenPop() {
 		stack.push(entry);
@@ -51,6 +55,7 @@ public class TestStack {
 	}
 	
 	//TEST5 to check an exception is thrown when an empty stack is popped, and pop removes top item
+	//wrote EmptyStackException. added throws EmpyStackException. Added removal of top item.
 	@Rule
 	public ExpectedException expectedEx5 = ExpectedException.none();
 	@Test
@@ -63,6 +68,7 @@ public class TestStack {
 	}
 	
 	//TEST6 to check size is correctly calculated for multiple items
+	//return list size
 	@Test
 	public void pushTwiceThenSize() {
 		stack.push(entry);
@@ -71,6 +77,7 @@ public class TestStack {
 	}
 	
 	//TEST7 to check that size is correctly calculated when items are removed
+	//no changes to code
 	@Test
 	public void pushTwicePopThenSize() {
 		stack.push(entry);
@@ -80,9 +87,10 @@ public class TestStack {
 	}
 	
 	//TEST8 to check pop works twice
+	//no changes to code
 	@Test
 	public void pushTwicePopTwice() {
-		Entry secondEntry = new Entry();
+		Entry secondEntry = new Entry(testFloat);
 		stack.push(entry);
 		stack.push(secondEntry);
 		stack.pop();
@@ -90,6 +98,7 @@ public class TestStack {
 	}
 	
 	//TEST9 to check exception thrown for top
+	//added throws EmptyStackException to top()
 	@Rule
 	public ExpectedException expectedEx9 = ExpectedException.none();
 	@Test

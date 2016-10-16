@@ -27,15 +27,24 @@ public class Entry {
 		return type;
 	}
 	
-	public String getString() {//badtype exception
-		return null;
+	public String getString() throws BadTypeException {
+		if (other == null) {							// if entry is not a Symbol
+			throw new BadTypeException("Bad Type Exception: Method can only be used on ");
+		}
+		return str;
 	}
 	
-	public Symbol getSymbol() {//badtype exception
+	public Symbol getSymbol() throws BadTypeException {
+		if (other == null) {			// if entry is not a symbol
+			throw new BadTypeException("Bad Type Exception: Method can only be used on ");
+		}
 		return other;
 	}
 	
-	public float getValue() {//badtype exception
-		return 0;
+	public float getValue() throws BadTypeException {
+		if (other != null) {			// if entry is a symbol
+			throw new BadTypeException("Bad Type Exception: Method can only be used on float");
+		}
+		return number;
 	}
 }
