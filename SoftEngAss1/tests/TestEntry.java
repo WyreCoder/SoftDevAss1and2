@@ -197,9 +197,6 @@ public class TestEntry {
    * <h1>TEST20</h1>
    * A test to test that getString() throws error for INVALID.
    * Added throws InvalidSymbolException (default case) to switch case.
-   * <i>It is worth noting invalidEntry is used to test an exception in the constructor, 
-   *     and therefore results in an Eclipse warning due to not actually using this 
-   *         Entry, only declaring it. Therefore, value not used.</i>
    */
   @Rule
   public ExpectedException expectedEx20 = ExpectedException.none();
@@ -209,6 +206,7 @@ public class TestEntry {
     expectedEx20.expect(InvalidSymbolException.class);
     expectedEx20.expectMessage("InvalidSymbolException: Symbol must be valid");
     Entry invalidEntry = new Entry(Symbol.INVALID);
+    invalidEntry.getString();   //added to remove 'value not used' warning.
   }
 
   /**
