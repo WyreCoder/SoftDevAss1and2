@@ -1,16 +1,22 @@
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
-import cs2800.EmptyStackException;
-import cs2800.Entry;
-import cs2800.Stack;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
+import softeng.cs2800.EmptyStackException;
+import softeng.cs2800.Entry;
+import softeng.cs2800.Stack;
+
 /**
+ * <h1>JUnit Test Class for Stack Class</h1>
+ * Tests developed here dictate the development of the Stack class.
+ * Test numbers are spread across this test class and TestEntry.
+ * This is because one test needed to be made in TestEntry to 
+ *     implement part of the Entry class before I could continue with 
+ *         the Stack class.
  * @author Chloe
- *
  */
 public class TestStack {
   private Stack stack;
@@ -18,7 +24,8 @@ public class TestStack {
   private float testFloat = 5;
 
   /**
-   * @throws java.lang.Exception
+   * This method is run before each test and prepares a new instance 
+   * of Stack and a new instance of Entry to use in the tests.
    */
   @Before
   public void setUp() {
@@ -26,43 +33,57 @@ public class TestStack {
     entry = new Entry(testFloat);
   }
 
-  // TEST1 to check top returns the last item added
-  // return 4.
-  // then refactored test to implement Entries instead of ints.
-  // return last value in list.
+  /**
+   * <h1>TEST1</h1> 
+   * A test to check top() returns the last item added to the stack.
+   * First implemented top() to return 4.
+   * Test later refactored test to implement Entries instead of ints after TEST3.
+   * top() changed to return an integer, top, which was a field of Stack. Later 
+   * I changed this to return the top Entry in an ArrayList. Originally, I had 
+   * implemented a linked list, such that each Entry has a field Entry next.
+   */
   @Test
   public void pushThenTop() {
     stack.push(entry);
     assertEquals("TEST2: push, then top", entry, stack.top());
   }
 
-  // TEST2 to check size is returned
-  // return 1.
-  // (refactored to push Entry instead of int)
+  /**
+   * <h1>TEST2</h1> 
+   * A test to check that an int, size, is returned correctly.
+   * size() coded to return 1.
+   * Test later refactored to push Entry instead of int after TEST3.
+   */
   @Test
   public void pushThenSize() {
     stack.push(entry);
     assertEquals("TEST3: push then size", 1, stack.size());
   }
 
-  // TEST4 to check pop gives last item added
-  // implemented Entry
-  // return Entry.getNext()
-  // changed code to use arrayList instead of Entry.getNext()
-  // implemented return last list item
+  /**
+   * <h1>TEST4</h1>
+   * A test to check pop returns the last item added.
+   * Here I implemented Entry in TEST3 in TestEntry.class.
+   * pop() coded to return Entry.getNext().
+   * Changed code to use arrayList instead of Entry.getNext().
+   * Implemented return last list item instead.
+   */
   @Test
   public void pushThenPop() {
     stack.push(entry);
     assertEquals("TEST4: Push then pop", entry, stack.pop());
   }
 
-  // TEST5 to check an exception is thrown when an empty stack is popped, and
-  // pop removes top item
-  // wrote EmptyStackException. added throws EmpyStackException. Added removal
-  // of top item.
+  /**
+   * <h1>TEST5</h1>
+   * A test to check an exception is thrown when an empty stack is popped, and
+   * pop() removes top item from stack.
+   * Wrote EmptyStackException.class. Added throws EmpyStackException. Added removal
+   * of top item.
+   */
   @Rule
   public ExpectedException expectedEx5 = ExpectedException.none();
-
+  
   @Test
   public void pushPopThenTop() throws Exception {
     expectedEx5.expect(EmptyStackException.class);
@@ -72,8 +93,11 @@ public class TestStack {
     stack.pop();
   }
 
-  // TEST6 to check size is correctly calculated for multiple items
-  // return list size
+  /**
+   * <h1>TEST6</h1>
+   * A test to check size is correctly calculated for multiple items.
+   * Changed from returning 1 to returning list size using size().
+   */
   @Test
   public void pushTwiceThenSize() {
     stack.push(entry);
@@ -81,8 +105,11 @@ public class TestStack {
     assertEquals("TEST6: Push twice, then size", 2, stack.size());
   }
 
-  // TEST7 to check that size is correctly calculated when items are removed
-  // no changes to code
+  /**
+   * <h1>TEST7</h1>
+   * A test to check that size is correctly calculated when items are removed.
+   * No changes to code required here.
+   */
   @Test
   public void pushTwicePopThenSize() {
     stack.push(entry);
@@ -91,8 +118,11 @@ public class TestStack {
     assertEquals("TEST7: Push twice, pop once, then size", 1, stack.size());
   }
 
-  // TEST8 to check pop works twice
-  // no changes to code
+  /**
+   * <h1>TEST8</h1>
+   * A test to check pop works twice.
+   * No changes to code made.
+   */
   @Test
   public void pushTwicePopTwice() {
     Entry secondEntry = new Entry(testFloat);
@@ -102,11 +132,14 @@ public class TestStack {
     assertEquals("TEST8: Push twice, pop twice", entry, stack.pop());
   }
 
-  // TEST9 to check exception thrown for top
-  // added throws EmptyStackException to top()
+  /**
+   * <h1>TEST9</h1>
+   * A test to check an exception is thrown for top() if stack is empty.
+   * Added check for empty stack and throws EmptyStackException to top().
+   */
   @Rule
   public ExpectedException expectedEx9 = ExpectedException.none();
-
+  
   @Test
   public void noPushThenTop() throws Exception {
     expectedEx9.expect(EmptyStackException.class);
